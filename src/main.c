@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include "../include/push_swap.h"
+
+int main(int	argc, char	**argv)
+{
+	if (argc < 2 || !argv[1])
+		return (0);
+
+	return (0);
+}
