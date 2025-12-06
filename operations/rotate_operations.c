@@ -1,3 +1,5 @@
+#include ../include/"push_swap.h"
+
 int rotate(t_list **stack)
 {
 	t_list	*head;

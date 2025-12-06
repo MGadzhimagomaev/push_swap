@@ -3,15 +3,15 @@
 int	swap(t_list **stack)
 {
 	int	tmp_index;
-	int	tmp_val;
+	int	tmp_content;
 
 	if (!stack || !(*stack) || !((*stack)->next))
 		return (-1);
-	tmp_val = (*stack)->val;
+	tmp_content = (*stack)->content;
 	tmp_index = (*stack)->index;
-	(*stack)->val = (*stack)->next->val;
+	(*stack)->content = (*stack)->next->content;
 	(*stack)->index = (*stack)->next->index;
-	(*stack)->next->val = tmp_val;
+	(*stack)->next->content = tmp_content;
 	(*stack)->next->index = tmp_index;
 	return (0);
 }

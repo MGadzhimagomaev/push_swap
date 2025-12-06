@@ -1,3 +1,5 @@
+#include ../include/"push_swap.h"
+
 int	push(t_list **stack_dest, t_list **stack_src)
 {
 	t_list	*tmp;

@@ -1,7 +1,7 @@
 NAME		=	push_swap.a
 INCLUDE		=	include
 LIBFT		=	libft
-SRC_DIR		=	src/
+SRC_DIR		=	$(wildcard src/*.c utilities/*.c operations/*.c)
 
 SRC_FILES	=	main instructions
 

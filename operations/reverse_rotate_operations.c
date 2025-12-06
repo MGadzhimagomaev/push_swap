@@ -1,3 +1,5 @@
+#include ../include/"push_swap.h"
+
 int	reverseRotate(t_list **stack)
 {
 	t_list	*head;
