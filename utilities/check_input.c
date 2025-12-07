@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 15:31:19 by mgadzhim          #+#    #+#             */
-/*   Updated: 2025/12/07 17:47:16 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2025/12/07 18:53:31 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,39 @@ static int	ft_contains(int num, char **argv, int i)
 	return (0);
 }
 
-static int	ft_isnum(char *num)
+int	ft_str_to_int(const char *s, int *out)
 {
-	int	i;
+	long long sign = 1;
+	long long n = 0;
+	int i = 0;
 
-	i = 0;
-	if (num[0] == '-' || num[0] == '+')
-		i++;
-	if (!num[i])
-		return (0);
-	while (num[i])
+	if (s[i] == '+' || s[i] == '-')
 	{
-		if (!ft_isdigit(num[i]))
+		if (s[i] == '-')
+			sign = -1;
+		i++;
+	}
+	if (!s[i])
+		return (0);
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+		n = n * 10 + (s[i] - '0');
+		if (sign == 1 && n > INT_MAX)
+			return (0);
+		if (sign == -1 && -n < INT_MIN)
 			return (0);
 		i++;
 	}
+	*out = (int)(n * sign);
 	return (1);
 }
 
 void	ft_check_args(int argc, char **argv)
 {
 	int		i;
-	long	tmp;
+	int		tmp;
 	char	**args;
 
 	i = 0;
@@ -58,9 +69,7 @@ void	ft_check_args(int argc, char **argv)
 	}
 	while (args[i])
 	{
-		tmp = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]) || ft_contains(tmp, args, i)
-			|| tmp < -2147483648 || tmp > 2147483647)
+		if (!ft_str_to_int(args[i], &tmp) || ft_contains(tmp, args, i))
 		{
 			ft_putendl_fd("Error", 1);
 			exit(0);

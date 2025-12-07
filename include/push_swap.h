@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 15:28:36 by mgadzhim          #+#    #+#             */
-/*   Updated: 2025/12/07 17:44:43 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2025/12/07 18:38:57 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 #include "../libft/libft.h"
+#include <limits.h>
 
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);
@@ -35,22 +36,14 @@ int		reverseRotate(t_list **stack);
 int		rra(t_list **stack_a);
 int		rrb(t_list **stack_b);
 int		rrr(t_list **stack_a, t_list **stack_b);
-// static int	ft_contains(int num, char **argv, int i);
-// static int	ft_isnum(char *num);
 void		ft_check_args(int argc, char **argv);
-// static int	get_min(t_list **stack, int idx);
-// static t_list	*get_next_min(t_list **stack);
 void	index_stack(t_list **stack);
 void	print_list(t_list *list);
 int		is_sorted(t_list **stack);
 void	ft_free(char **str);
 int		get_distance(t_list **stack, int index);
 void	free_stack(t_list **stack);
-// static void	sort_3(t_list **stack_a);
-// static void	sort_4(t_list **stack_a, t_list **stack_b);
-// static void	sort_5(t_list **stack_a, t_list **stack_b);
 void	sort_simple(t_list **stack_a, t_list **stack_b);
-// static int	get_max_bits(t_list **stack);
 void	sort_radix(t_list **stack_a, t_list **stack_b);
 
 #endif
