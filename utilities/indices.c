@@ -1,20 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   indices.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/07 15:31:27 by mgadzhim          #+#    #+#             */
+/*   Updated: 2025/12/07 17:47:19 by mgadzhim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
-
-static int	get_min(t_list **stack, int idx)
-{
-	t_list	*head;
-	int		min;
-
-	head = *stack;
-	min = head->index;
-	while (head->next)
-	{
-		head = head->next;
-		if ((head->index < min) && head->index != idx)
-			min = head->index;
-	}
-	return (min);
-}
 
 static t_list	*get_next_min(t_list **stack)
 {

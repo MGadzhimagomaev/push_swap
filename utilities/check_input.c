@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_input.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/07 15:31:19 by mgadzhim          #+#    #+#             */
+/*   Updated: 2025/12/07 17:47:16 by mgadzhim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 static int	ft_contains(int num, char **argv, int i)
@@ -17,8 +29,10 @@ static int	ft_isnum(char *num)
 	int	i;
 
 	i = 0;
-	if (num[0] == '-')
+	if (num[0] == '-' || num[0] == '+')
 		i++;
+	if (!num[i])
+		return (0);
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]))

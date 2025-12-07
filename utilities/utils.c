@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/07 15:31:33 by mgadzhim          #+#    #+#             */
+/*   Updated: 2025/12/07 17:01:43 by mgadzhim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/push_swap.h"
+
 void	print_list(t_list *list)
 {
 	t_list	*tmp;
@@ -18,7 +32,7 @@ int	is_sorted(t_list **stack)
 	head = *stack;
 	while (head && head->next)
 	{
-		if (head->value > head->next->value)
+		if (head->content > head->next->content)
 			return (0);
 		head = head->next;
 	}

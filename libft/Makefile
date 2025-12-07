@@ -6,7 +6,7 @@
 #    By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/23 19:53:33 by mgadzhim          #+#    #+#              #
-#    Updated: 2025/06/01 20:02:15 by mgadzhim         ###   ########.fr        #
+#    Updated: 2025/12/07 17:28:16 by mgadzhim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,7 @@ ft_putnbr_fd.c
 OBJ			= $(SRC:.c=.o)
 
 SRC_BONUS	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
-ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+ft_lstlast_bonus.c ft_lstadd_back_bonus.c
 
 OBJ_BONUS 	= $(SRC_BONUS:.c=.o)
 

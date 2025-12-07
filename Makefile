@@ -1,31 +1,32 @@
-NAME		=	push_swap.a
-INCLUDE		=	include
-LIBFT		=	libft
-SRC_DIR		=	$(wildcard src/*.c utilities/*.c operations/*.c)
+NAME        = push_swap
+INCLUDE     = include
+LIBFT_DIR   = libft
+LIBFT       = $(LIBFT_DIR)/libft.a
 
-SRC_FILES	=	main instructions
+SRC         = $(wildcard src/*.c utilities/*.c operations/*.c)
+OBJ         = $(SRC:.c=.o)
 
-SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ			=	$(SRC:.c=.o)
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -I $(INCLUDE)
 
-$(NAME):	$(OBJ)
-			@make -C $(LIBFT)
-			@cp libft/libft.a .
-			@mv libft.a $(NAME)
-			ar rcs $(NAME) $(OBJ)
+all: $(LIBFT) $(NAME)
 
-.c.o:
-	cc -Wall -Wextra -Werror -c $< -o $@
+$(LIBFT):
+	$(MAKE) bonus -C $(LIBFT_DIR)
 
-all:		$(NAME)
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf	$(OBJ)
-	@make clean -C $(LIBFT)
+	rm -f $(OBJ)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -rf	$(NAME)
-	@make fclean -C $(LIBFT)
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

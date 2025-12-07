@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/07 15:30:23 by mgadzhim          #+#    #+#             */
+/*   Updated: 2025/12/07 17:50:44 by mgadzhim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 static void	initStack(t_list **stack, int argc, char **argv)
@@ -28,9 +40,9 @@ static void	initStack(t_list **stack, int argc, char **argv)
 static void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) <= 5)
-		simple_sort(stack_a, stack_b);
+		sort_simple(stack_a, stack_b);
 	else
-		radix_sort(stack_a, stack_b);
+		sort_radix(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)

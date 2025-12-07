@@ -1,4 +1,32 @@
-#include ../include/"push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/07 15:30:45 by mgadzhim          #+#    #+#             */
+/*   Updated: 2025/12/07 15:53:24 by mgadzhim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../include/push_swap.h"
+
+static int	get_min(t_list **stack, int idx)
+{
+	t_list	*head;
+	int		min;
+
+	head = *stack;
+	min = head->index;
+	while (head->next)
+	{
+		head = head->next;
+		if ((head->index < min) && head->index != idx)
+			min = head->index;
+	}
+	return (min);
+}
 
 static void	sort_3(t_list **stack_a)
 {
@@ -83,11 +111,11 @@ static void	sort_5(t_list **stack_a, t_list **stack_b)
 	if (is_sorted(stack_a))
 		return ;
 	pb(stack_a, stack_b);
-	sort_4(stack_a);
+	sort_4(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
 
-void	sorting_simple(t_list **stack_a, t_list **stack_b)
+void	sort_simple(t_list **stack_a, t_list **stack_b)
 {
 	int	list_size;
 
