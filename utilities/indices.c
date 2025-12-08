@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 15:31:27 by mgadzhim          #+#    #+#             */
-/*   Updated: 2025/12/07 17:47:19 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:45:35 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static t_list	*get_next_min(t_list **stack)
 	{
 		while (head)
 		{
-			if ((head->index == -1) && (!is_min || head->content < min->content))
+			if ((head->index == -1) 
+				&& (!is_min || head->content < min->content))
 			{
 				is_min = 1;
 				min = head;
@@ -43,7 +44,7 @@ void	index_stack(t_list **stack)
 
 	index = 0;
 	head = get_next_min(stack);
-	while(head)
+	while (head)
 	{
 		head->index = index++;
 		head = get_next_min(stack);

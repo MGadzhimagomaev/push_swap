@@ -6,13 +6,13 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 15:30:08 by mgadzhim          #+#    #+#             */
-/*   Updated: 2025/12/07 15:30:10 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:31:04 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int rotate(t_list **stack)
+int	rotate(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;

@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 20:51:31 by mgadzhim          #+#    #+#             */
-/*   Updated: 2025/12/07 17:27:38 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:29:08 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_list
 	int				content;
 	int				index;
 	struct s_list	*next;
-} t_list;
+}	t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 15:30:45 by mgadzhim          #+#    #+#             */
-/*   Updated: 2025/12/07 15:53:24 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2025/12/08 18:50:36 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,25 @@ static int	get_min(t_list **stack, int idx)
 	return (min);
 }
 
-static void	sort_3(t_list **stack_a)
+static void	sort_3(t_list **stack_a, t_list *head)
 {
-	t_list	*head;
-	int		min;
-	int		next_min;
-
-	head = *stack_a;
-	min = get_min(stack_a, -1);
-	next_min = get_min(stack_a, min);
-	if (is_sorted(stack_a))
-		return ;
-	if (head->index == min && head->next->index != next_min)
+	if (head->index == get_min(stack_a, -1) 
+		&& head->next->index != get_min(stack_a, get_min(stack_a, -1)))
 	{
 		ra(stack_a);
 		sa(stack_a);
 		rra(stack_a);
 	}
-	else if (head->index == next_min)
+	else if (head->index == get_min(stack_a, get_min(stack_a, -1)))
 	{
-		if (head->next->index == min)
+		if (head->next->index == get_min(stack_a, -1))
 			sa(stack_a);
 		else
 			rra(stack_a);
 	}
 	else
 	{
-		if (head->next->index == min)
+		if (head->next->index == get_min(stack_a, -1))
 			ra(stack_a);
 		else
 		{
@@ -83,7 +75,7 @@ static void	sort_4(t_list **stack_a, t_list **stack_b)
 	if (is_sorted(stack_a))
 		return ;
 	pb(stack_a, stack_b);
-	sort_3(stack_a);
+	sort_3(stack_a, *stack_a);
 	pa(stack_a, stack_b);
 }
 
@@ -106,7 +98,7 @@ static void	sort_5(t_list **stack_a, t_list **stack_b)
 		rra(stack_a);
 		rra(stack_a);
 	}
-	else if (distance == 3)
+	else if (distance == 4)
 		rra(stack_a);
 	if (is_sorted(stack_a))
 		return ;
@@ -118,14 +110,18 @@ static void	sort_5(t_list **stack_a, t_list **stack_b)
 void	sort_simple(t_list **stack_a, t_list **stack_b)
 {
 	int	list_size;
+	int	min;
+	int	next_min;
 
+	min = get_min(stack_a, -1);
+	next_min = get_min(stack_a, min);
 	list_size = ft_lstsize(*stack_a);
 	if (is_sorted(stack_a) || list_size <= 1)
 		return ;
 	if (list_size == 2)
 		sa(stack_a);
 	else if (list_size == 3)
-		sort_3(stack_a);
+		sort_3(stack_a, *stack_a);
 	else if (list_size == 4)
 		sort_4(stack_a, stack_b);
 	else if (list_size == 5)

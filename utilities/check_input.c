@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 15:31:19 by mgadzhim          #+#    #+#             */
-/*   Updated: 2025/12/07 18:53:31 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2025/12/08 17:50:42 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ static int	ft_contains(int num, char **argv, int i)
 
 int	ft_str_to_int(const char *s, int *out)
 {
-	long long sign = 1;
-	long long n = 0;
-	int i = 0;
+	long long	sign;
+	long long	n;
+	int			i;
 
+	sign = 1;
+	n = 0;
+	i = 0;
 	if (s[i] == '+' || s[i] == '-')
 	{
-		if (s[i] == '-')
+		if (s[i++] == '-')
 			sign = -1;
-		i++;
 	}
 	if (!s[i])
 		return (0);
@@ -42,12 +44,9 @@ int	ft_str_to_int(const char *s, int *out)
 	{
 		if (!ft_isdigit(s[i]))
 			return (0);
-		n = n * 10 + (s[i] - '0');
-		if (sign == 1 && n > INT_MAX)
+		n = n * 10 + (s[i++] - '0');
+		if ((sign == 1 && n > INT_MAX) || (sign == -1 && (-n) < INT_MIN))
 			return (0);
-		if (sign == -1 && -n < INT_MIN)
-			return (0);
-		i++;
 	}
 	*out = (int)(n * sign);
 	return (1);
@@ -71,7 +70,7 @@ void	ft_check_args(int argc, char **argv)
 	{
 		if (!ft_str_to_int(args[i], &tmp) || ft_contains(tmp, args, i))
 		{
-			ft_putendl_fd("Error", 1);
+			ft_putendl_fd("Error", 2);
 			exit(0);
 		}
 		i++;
